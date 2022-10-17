@@ -9,6 +9,7 @@ public class Project implements Serializable {
     private String descripcion;
     private String fecha_creacion;
     private String fecha_fin;
+    private String repositorio;
     private int usuario_id;
     private int categoria_id;
     private int lenguaje_id;
@@ -19,12 +20,13 @@ public class Project implements Serializable {
     public Project() {
     }
 
-    public Project(int id, String nombre, String descripcion, String fecha_creacion, String fecha_fin, int usuario_id, int categoria_id, int lenguaje_id, User usuario, Category categoria, Languaje lenguaje) {
+    public Project(int id, String nombre, String descripcion, String fecha_creacion, String fecha_fin, String repositorio, int usuario_id, int categoria_id, int lenguaje_id, User usuario, Category categoria, Languaje lenguaje) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha_creacion = fecha_creacion;
         this.fecha_fin = fecha_fin;
+        this.repositorio = repositorio;
         this.usuario_id = usuario_id;
         this.categoria_id = categoria_id;
         this.lenguaje_id = lenguaje_id;
@@ -121,14 +123,23 @@ public class Project implements Serializable {
         this.lenguaje = lenguaje;
     }
 
+    public String getRepositorio() {
+        return repositorio;
+    }
+
+    public void setRepositorio(String repositorio) {
+        this.repositorio = repositorio;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", fecha_creacion=" + fecha_creacion +
-                ", fecha_fin=" + fecha_fin +
+                ", fecha_creacion='" + fecha_creacion + '\'' +
+                ", fecha_fin='" + fecha_fin + '\'' +
+                ", repositorio='" + repositorio + '\'' +
                 ", usuario_id=" + usuario_id +
                 ", categoria_id=" + categoria_id +
                 ", lenguaje_id=" + lenguaje_id +
