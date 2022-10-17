@@ -22,7 +22,6 @@ import com.google.gson.Gson;
 import com.taller_st.app_mobile_taller.modelos.Category;
 import com.taller_st.app_mobile_taller.modelos.Languaje;
 import com.taller_st.app_mobile_taller.modelos.Project;
-import com.taller_st.app_mobile_taller.modelos.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -135,12 +134,12 @@ public class NewProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_project);
 
-        txtRepo = findViewById(R.id.txtRepo);
-        txtDescripcion = findViewById(R.id.txtDescripcion);
-        txtNombre = findViewById(R.id.txtNombre);
-        btnGuardar = findViewById(R.id.btnGuardar);
-        spCategegorias = findViewById(R.id.spCat);
-        spLenguajes = findViewById(R.id.spLeng);
+        txtRepo = findViewById(R.id.txtRepoEdit);
+        txtDescripcion = findViewById(R.id.txtDescripcionEdit);
+        txtNombre = findViewById(R.id.txtNombreEdit);
+        btnGuardar = findViewById(R.id.btnGuardarUsu);
+        spCategegorias = findViewById(R.id.spCatEdit);
+        spLenguajes = findViewById(R.id.spLengEdit);
         obtenerCategorias();
         obtenerLenguajes();
 
