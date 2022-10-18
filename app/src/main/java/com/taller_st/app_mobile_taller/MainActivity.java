@@ -2,6 +2,7 @@ package com.taller_st.app_mobile_taller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private ProgressDialog pDialog;
     private TextInputEditText txtEmailLogin, txtPasswordLogin;
     public static User usuario = null;
     public static final String baseUrl = "http://192.168.38.65:4000/";
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logIn(View view){
+        pDialog = ProgressDialog.show(MainActivity.this,"Inicio de sesión","Iniciando sesión ..",true);
+
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = baseUrl+"api/sign_in";
 
@@ -68,16 +72,22 @@ public class MainActivity extends AppCompatActivity {
                     , new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
+
                     try {
                         if(response.getString("msg").equals("ok")){
+                            pDialog.dismiss();
+                            Thread.sleep(1000);
                             usuario = new Gson().fromJson(String.valueOf(response.getJSONObject("user")),User.class);
                             startActivity(new Intent(MainActivity.this,HomeActivity.class));
                         }else
                         {
                             Log.e("msg",response.toString());
                             Toast.makeText(getApplicationContext(),response.getString("msg").toString(),Toast.LENGTH_LONG).show();
+                            pDialog.dismiss();
                         }
                     } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
