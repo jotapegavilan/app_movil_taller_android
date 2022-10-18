@@ -1,5 +1,6 @@
 package com.taller_st.app_mobile_taller.adaptadores;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.taller_st.app_mobile_taller.EditProjectActivity;
 import com.taller_st.app_mobile_taller.R;
 import com.taller_st.app_mobile_taller.modelos.Category;
 import com.taller_st.app_mobile_taller.modelos.Project;
@@ -41,7 +43,15 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.viewHold
     @Override
     public void onBindViewHolder(@NonNull ProjectAdapter.viewHolder holder, int position) {
         try {
-            holder.cargarDatos(projectList.get(position));
+            Project pro = projectList.get(position);
+            holder.cargarDatos(pro);
+            holder.card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(),
+                            EditProjectActivity.class).putExtra("proyecto",pro));
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }

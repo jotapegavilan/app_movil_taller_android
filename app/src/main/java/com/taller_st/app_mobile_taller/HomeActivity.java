@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     public void cargarRecycler(int user){
         proyectos = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.119:4000/api/proyectos/"+user;
+        String url = MainActivity.baseUrl+"api/proyectos/"+user;
 
         JsonArrayRequest jaRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override

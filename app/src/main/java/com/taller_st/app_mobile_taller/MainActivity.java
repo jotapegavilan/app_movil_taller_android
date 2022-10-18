@@ -35,7 +35,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private TextInputEditText txtEmailLogin, txtPasswordLogin;
     public static User usuario = null;
-
+    public static final String baseUrl = "http://192.168.38.65:4000/";
+    public static final String baseUrl1 = "http://192.168.1.119:4000/";
 
     public void init_ui(){
         txtEmailLogin = findViewById(R.id.txtEmailLogin);
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void logIn(View view){
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.119:4000/api/sign_in";
+        String url = baseUrl+"api/sign_in";
 
 
         JsonObjectRequest joRequest = null;

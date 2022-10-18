@@ -38,7 +38,7 @@ public class NewProjectActivity extends AppCompatActivity {
     public void enviarProyecto(Project proyecto) throws JSONException {
         RequestQueue queue = Volley.newRequestQueue(this);
         String jsonPro = new Gson().toJson(proyecto);
-        String url = "http://192.168.1.119:4000/api/proyectos";
+        String url = MainActivity.baseUrl+"api/proyectos";
         JsonObjectRequest json = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(jsonPro), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -59,7 +59,7 @@ public class NewProjectActivity extends AppCompatActivity {
     public void obtenerCategorias(){
         categories = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.119:4000/api/categorias";
+        String url = MainActivity.baseUrl+"api/categorias";
         JsonArrayRequest jaRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -97,7 +97,7 @@ public class NewProjectActivity extends AppCompatActivity {
     public void obtenerLenguajes(){
         lenguajes = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.119:4000/api/lenguajes";
+        String url = MainActivity.baseUrl+"api/lenguajes";
         JsonArrayRequest jaRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
