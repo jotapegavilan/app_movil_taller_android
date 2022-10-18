@@ -67,6 +67,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.viewHold
 
         public void cargarDatos(Project json) throws JSONException {
             int color = 0;
+            int colorText = 0;
 
             switch (json.getLenguaje().getNombre()){
                 case "Java":
@@ -91,22 +92,31 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.viewHold
 
             if(json.getCategoria().getColor().equalsIgnoreCase("rojo")){
                 color = Color.RED;
+                colorText = Color.WHITE;
+
             }
             if(json.getCategoria().getColor().equalsIgnoreCase("verde")){
                 color = Color.GREEN;
+                colorText = Color.BLACK;
             }
             if(json.getCategoria().getColor().equalsIgnoreCase("azul")){
                 color = Color.BLUE;
+                colorText = Color.WHITE;
             }
             if(json.getCategoria().getColor().equalsIgnoreCase("naranja")){
                 color = Color.YELLOW;
+                colorText = Color.BLACK;
             }
             if(json.getCategoria().getColor().equalsIgnoreCase("morado")){
                 color = Color.CYAN;
+                colorText = Color.BLACK;
             }
             CardView card = this.card.findViewById(R.id.cardView);
             card.setCardBackgroundColor(color);
-            this.txt_nombre.setText(json.getNombre());
+            txt_nombre.setTextColor(colorText);
+            txt_descripcion.setTextColor(colorText);
+            txt_desarrollador.setTextColor(colorText);
+            this.txt_nombre.setText(json.getNombre().toUpperCase());
             this.txt_descripcion.setText(json.getDescripcion());
             this.txt_desarrollador.setText(json.getUsuario().getNombres()+ " " +json.getUsuario().getApellidos() );
         }

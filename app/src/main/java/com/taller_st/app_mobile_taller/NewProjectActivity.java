@@ -136,7 +136,7 @@ public class NewProjectActivity extends AppCompatActivity {
 
         txtRepo = findViewById(R.id.txtRepoEdit);
         txtDescripcion = findViewById(R.id.txtDescripcionEdit);
-        txtNombre = findViewById(R.id.txtNombreEdit);
+        txtNombre = findViewById(R.id.txtNombre);
         btnGuardar = findViewById(R.id.btnGuardarUsu);
         spCategegorias = findViewById(R.id.spCatEdit);
         spLenguajes = findViewById(R.id.spLengEdit);

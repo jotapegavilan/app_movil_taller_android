@@ -8,17 +8,19 @@ public class User  implements Serializable {
     private String nombres;
     private String apellidos;
     private String email;
+    private String rol;
     private Timestamp fecha_creacion;
     private Timestamp fecha_fin;
 
     public User() {
     }
 
-    public User(int id, String nombres, String apellidos, String email, Timestamp fecha_creacion, Timestamp fecha_fin) {
+    public User(int id, String nombres, String apellidos, String email, String rol, Timestamp fecha_creacion, Timestamp fecha_fin) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.email = email;
+        this.rol = rol;
         this.fecha_creacion = fecha_creacion;
         this.fecha_fin = fecha_fin;
     }
@@ -71,6 +73,14 @@ public class User  implements Serializable {
         this.fecha_fin = fecha_fin;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -78,6 +88,7 @@ public class User  implements Serializable {
                 ", nombres='" + nombres + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", email='" + email + '\'' +
+                ", rol='" + rol + '\'' +
                 ", fecha_creacion=" + fecha_creacion +
                 ", fecha_fin=" + fecha_fin +
                 '}';

@@ -42,10 +42,6 @@ public class Languaje implements Serializable {
 
     @Override
     public String toString() {
-        return "Languaje{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", img=" + img +
-                '}';
+        return this.getNombre();
     }
 }

@@ -42,10 +42,6 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", color='" + color + '\'' +
-                '}';
+        return this.getNombre();
     }
 }

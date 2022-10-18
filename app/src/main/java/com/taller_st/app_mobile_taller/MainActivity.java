@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         txtEmailLogin = findViewById(R.id.txtEmailLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
 
-        txtEmailLogin.setError("NO EXISTE");
-        txtPasswordLogin.setError("NO COINCIDE");
+
     }
 
     public void next_activity(View view){
@@ -67,7 +67,18 @@ public class MainActivity extends AppCompatActivity {
                     , new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.i("ARRAY:", response.toString());
+                    try {
+                        if(response.getString("msg").equals("ok")){
+                            usuario = new Gson().fromJson(String.valueOf(response.getJSONObject("user")),User.class);
+                            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+                        }else
+                        {
+                            Log.e("msg",response.toString());
+                            Toast.makeText(getApplicationContext(),response.getString("msg").toString(),Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -123,32 +134,7 @@ public class MainActivity extends AppCompatActivity {
         usuario.setId(2);
 
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.119:4000/api/proyectos";
 
-        JsonArrayRequest jaRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                for( int i=0; i < response.length(); i++ ){
-                    try {
-                        Project pro = new Gson().fromJson(String.valueOf(response.getJSONObject(i)),Project.class);
-
-
-                        list.add(pro);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("ERROR:", error.toString());
-            }
-        });
-
-        queue.add(jaRequest);
 
     }
 }
