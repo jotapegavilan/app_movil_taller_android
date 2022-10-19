@@ -11,11 +11,12 @@ public class User  implements Serializable {
     private String rol;
     private Timestamp fecha_creacion;
     private Timestamp fecha_fin;
+    private String token;
 
     public User() {
     }
 
-    public User(int id, String nombres, String apellidos, String email, String rol, Timestamp fecha_creacion, Timestamp fecha_fin) {
+    public User(int id, String nombres, String apellidos, String email, String rol, Timestamp fecha_creacion, Timestamp fecha_fin, String token) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -23,6 +24,7 @@ public class User  implements Serializable {
         this.rol = rol;
         this.fecha_creacion = fecha_creacion;
         this.fecha_fin = fecha_fin;
+        this.token = token;
     }
 
     public int getId() {
@@ -81,6 +83,14 @@ public class User  implements Serializable {
         this.rol = rol;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -91,6 +101,7 @@ public class User  implements Serializable {
                 ", rol='" + rol + '\'' +
                 ", fecha_creacion=" + fecha_creacion +
                 ", fecha_fin=" + fecha_fin +
+                ", token='" + token + '\'' +
                 '}';
     }
 }

@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                             pDialog.dismiss();
                             Thread.sleep(1000);
                             usuario = new Gson().fromJson(String.valueOf(response.getJSONObject("user")),User.class);
+                            Log.i("user",usuario.toString());
                             startActivity(new Intent(MainActivity.this,HomeActivity.class));
                         }else
                         {
